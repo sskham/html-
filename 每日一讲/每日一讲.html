@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+	<meta charset="UTF-8" />
+
+            /*      找出一个字符串里出现最多的字符及其出现次数                  */^M
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />	<meta http-equiv="X-UA-Compatible" content="ie=edge" />
+	<title>Document</title>
+</head>
+<body>
+</body>
+</html>
+<script type="text/javascript">
+	    /*      找出一个字符串里出现最多的字符及其出现次数                  */
+	
+	function showMostStr(str){                     //
+		var newObj = {};						   //   创建一个空的对象。
+		for (var i = 0; i < str.length; i++) {     //  首先:1.对所给的字符串里的字符进行整理，即算出各个字符的出现次数。
+			if(!newObj[str[i]]) {                  //   --→这一步是利用对象的属性（键）名是唯一的				
+				newObj[str[i]] = 1;                //	 newobj['a']=2 ; ['b']=2;
+												   //				假设 str = 'aabbaaccddd'；经过这个for语句后
+			}else {                                //                   |  
+				newObj[str[i]]++;                  //					↓	
+			}                                      //     得到的:    newObj = {'a':4,'b':2,'c':2,'d':3};
+		}
+		console.log(newObj);                       //  2.对各个字符出现的次数进行比较，得到出现次数最多的字符。
+		var max = 0;                               //  这里是定义了一个变量，这个变量是用来跟 newObj里的每个属性的值进行比较的
+		for (var i in newObj) {                    //	--->因为这里obj是对象，所以用的是for in来遍历   
+												   //		注: 在for in中，i是代表对象的属性，obj[i]是属性的值
+			if(newObj[i] > max) {                  //   --->  进行比较
+				var newArray = [];                 //   --->创建了一个新的数组来存放出现次数最多的字符 
+				max = newObj[i];                   //		
+				newArray.push(i);                  //
+			}else if(newObj[i] == max) {           //   --> 这里考虑的是可能存在多个出现最多的字符
+				max = newObj[i];                   //
+				newArray.push(i);                  //
+			}	
+		}
+		for (var i = 0 ; i < newArray.length; i++) {			                 
+			console.log('出现最多的字符是'+ newArray[i] + '，出现次数为' + max);     //打印结果
+		}
+	}
+	var str1 = 'babaaacccdbaejassbbb';
+	showMostStr(str1);
+	var str2 = 'abcbacaabb';
+	showMostStr(str2);
+	var str3 = 'sdaszcq111111111wesdadsasdad';
+	showMostStr(str3);
+</script>

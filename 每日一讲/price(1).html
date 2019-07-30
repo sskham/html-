@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<style type="text/css">
+		*{padding: 0;margin: 0;}
+		li{list-style: none;}
+		ul{position: relative;}
+		.out{width: 300px;height: 300px;border: 1px solid #666;border-radius: 50%;
+		display: flex;justify-content: center;align-items: center;}
+		.in{width: 280px;height: 280px;border: 2px solid #333;border-radius: 50%;}
+		li{width: 5px;height: 20px;background: #000000;position: absolute;left: 140px;
+		transform:rotate(0deg);
+		transform-origin: 0px 140px;}
+		.hour{width: 7px;height: 50px;background: #000000;position: absolute;
+		left: 140px;top: 90px;
+		transform:rotate(90deg);
+		transform-origin: 1px 50px;
+		animation:hour 43200s linear infinite;}
+		.min{width: 4px;height: 70px;background: #000000;position: absolute;
+		left: 141px;top: 70px;
+		transform:rotate(180deg);
+		transform-origin: 1px 70px;
+		animation:mins 3600s linear infinite;}
+		.sec{width: 2px;height: 90px;background: #000000;position: absolute;
+		left: 141px;top: 50px;
+		transform:rotate(0deg);
+		transform-origin: 0px 90px;
+		animation:secs 60s linear infinite;}
+	</style>
+	<body>
+		<div class="out">
+			<ul class="in">
+				<div class="hour"></div>
+				<div class="min"></div>
+				<div class="sec"></div>
+				<li></li>
+			</ul>
+		</div>
+		
+	</body>
+</html>
+<script type="text/javascript">
+	var ins = document.getElementsByClassName('in')[0]
+	for(var a =1;a<12;a++){
+		ins.innerHTML+='<li></li>'
+		var lis=document.getElementsByTagName('li')
+		lis[a].style.transform = 'rotate('+a*30+'deg)'
+	}
+	var date = new Date
+	var h = date.getHours()
+	var m = date.getMinutes()
+	var s = date.getSeconds()
+	if(h<=11){
+		var hj = (h*60+m)/(12*60)*360
+	}else{
+		var hj = ((h-12)*60+m)/(12*60)*360
+	}
+	var mj = m/60*360
+	var sj = s/60*360+4
+	var sty = document.styleSheets[0]
+	sty.insertRule(
+	"@keyframes hour{from{ transform:rotate("+hj+"deg); }to{ transform:rotate("+(hj+360)+"deg);}}",9
+	)
+	sty.insertRule(
+	"@keyframes mins{from{ transform:rotate("+mj+"deg); }to{ transform:rotate("+(mj+360)+"deg);}}",10
+	)
+	sty.insertRule(
+	"@keyframes secs{from{ transform:rotate("+sj+"deg); }to{ transform:rotate("+(sj+360)+"deg);}}",10
+	)
+</script>

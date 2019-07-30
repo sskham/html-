@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link rel="stylesheet" href="css/style1.css">
+	<script src="../part1/jquery/代码/js/jquery.js" type="text/javascript" charset="utf-8"></script>
+</head>
+<body>
+	<div class="book preserve-3d">
+			<div class="now_page point">
+				<div class="book-page">
+					<p>第三页</p>
+				</div>
+			</div>
+	
+			<div class="now_page point">
+				<div class="book-page">
+					<p>第二页</p>
+				</div>
+			</div>
+			
+			<div class="now_page point">
+				<div class="book-page ">
+					<p>第一页</p>
+				</div>
+			</div>
+			
+			<!--封面-->
+			<div class="point now_page">
+				<div class="book-page first-page">
+					<p>封面</p>
+				</div>
+			</div>
+		</div>
+</body>
+</html>
+<script type="text/javascript">
+	$('.now_page').click(function(){
+			if($(this).hasClass('flip-animation-start')){
+				$(this).removeClass('flip-animation-start').addClass('flip-animation-end');
+			}else{
+				$(this).removeClass('flip-animation-end').addClass('flip-animation-start');
+			}
+		})
+
+</script>

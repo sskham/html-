@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title></title>
+	</head>
+	<body>
+	</body>
+</html>
+<script type="text/javascript">
+	var arr = [1,1,1,1,1,1,1,2,2,2,2,3,3,3,3,3,3,3,]
+	var str='12323432142134dsfasdfsadfasdfwqe'
+	function ff(n){
+		if(n instanceof Array){
+			var n1 = []
+		}else{
+			var n1 = ''
+		}
+		for(var a in n){
+			if(n1.indexOf(n[a])==-1){
+				n1 = n1.concat(n[a])
+			}
+		}
+		return n1
+	}
+	console.log(ff(str))
+</script>
